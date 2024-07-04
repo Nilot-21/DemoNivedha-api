@@ -4,6 +4,8 @@ Test for models
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
+from core import models
+
 class ModelTest(TestCase):
     """Test models."""
 
@@ -43,3 +45,19 @@ class ModelTest(TestCase):
         )
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
+    
+    def test_create_patient(self):
+        """Creating test for patient"""
+        patient = models.Patient.objects.create(
+            patient_name='abcd',
+            phone_no=1234567890,
+            address='abc',
+            address='qwer',
+            landmark='asdf',
+            country='zxcvb',
+            city='mno',
+            state='mnop',
+            pincode=12345,
+        )
+        self.assertEqual(str(patient), patient.patient_name)
+

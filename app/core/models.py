@@ -9,6 +9,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+from django.conf import settings
 
 class UserManager(BaseUserManager):
     """Manager for user"""
@@ -43,3 +44,18 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+
+class Patient(models.Model):
+    """Patient object"""
+    patient_name = models.CharField(max_length=30)
+    phone_no = models.IntegerField(unique=True)
+    address = models.CharField(max_length=50)
+    landmark = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    city = models.CharField(max_length=50)
+    state = models.CharField(max_length=50)
+    pincode = models.IntegerField()
+
+    def __str__(self):
+        return self.patient_name
