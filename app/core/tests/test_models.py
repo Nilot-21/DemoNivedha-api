@@ -52,7 +52,6 @@ class ModelTest(TestCase):
             patient_name='abcd',
             phone_no=1234567890,
             address='abc',
-            address='qwer',
             landmark='asdf',
             country='zxcvb',
             city='mno',
